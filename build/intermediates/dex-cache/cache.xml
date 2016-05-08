@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/Maps/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6f8f90bdf6b7e9680b174a0cb2f3a1a3a74fe64f">
+        <dex dex="/home/kristijan/AndroidStudioProjects/Maps/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_0dc252f756673300333d87fd5f7f7513eb02ff12/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/Maps/app/build/intermediates/exploded-aar/com.android.support/design/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="/home/kristijan/AndroidStudioProjects/Maps/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.3.0_0e5dd252cd2c0fcce43be3bdba911fcbff433da7/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/Maps/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="/home/kristijan/AndroidStudioProjects/Maps/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.3.0_832d33ad192962d18b7062a238806d3ee353031b/classes.dex" />
+    </item>
+
+</items>
