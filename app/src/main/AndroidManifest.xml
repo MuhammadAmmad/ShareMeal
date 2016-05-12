@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
 
     <application
+        android:name=".ShareMealApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -36,6 +37,17 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"
             />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name="com.example.kristijan.sharemeal.MapsActivity"
             android:label="@string/title_activity_maps">
@@ -44,11 +56,11 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="LoginActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
