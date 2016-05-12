@@ -35,8 +35,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"
-            />
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".MainActivity"
@@ -46,22 +45,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
-            android:name="com.example.kristijan.sharemeal.MapsActivity"
-            android:label="@string/title_activity_maps">
-
-        </activity>
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login">
-        </activity>
+            android:label="@string/title_activity_login"></activity>
         <activity
             android:name=".SignUpActivity"
-            android:label="LoginActivity">
+            android:label="LoginActivity"></activity>
 
-        </activity>
     </application>
 
 </manifest>

@@ -4,9 +4,6 @@ import android.app.Application;
 
 import com.firebase.client.Firebase;
 
-/**
- * Created by kristijan on 12/05/16.
- */
 public class ShareMealApplication extends Application {
 
     @Override
