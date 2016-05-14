@@ -5,23 +5,33 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.NumberPicker;
 
 import com.firebase.client.Firebase;
 
 /**
  * Created by kristijan on 12/05/16.
  */
-public class MainActivity extends AppCompatActivity {
+public class EventActivity extends AppCompatActivity {
 
     private Firebase mRef;
 
     private String mUserId;
-    private String itemsUrl;
+    private String eventsUrl;
+
+    protected EditText meal;
+    protected EditText locationAddress;
+    protected EditText locationCoordinates;
+    protected NumberPicker maxPerson;
+    protected Button createButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_create);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -37,7 +47,45 @@ public class MainActivity extends AppCompatActivity {
             loadLoginView();
         }
 
-        itemsUrl = Constants.FIREBASE_URL + "/users/" + mUserId + "/items";
+        eventsUrl = Constants.FIREBASE_URL + "/users/" + mUserId + "/events";
+
+        meal = (EditText)findViewById(R.id.meal);
+        locationAddress = (EditText)findViewById(R.id.locationAddress);
+        locationCoordinates = (EditText)findViewById(R.id.locationCoordinates);
+        maxPerson = (NumberPicker) findViewById(R.id.maxPerson);
+
+        createButton = (Button)findViewById(R.id.createButton);
+
+        maxPerson.setMinValue(0);
+        //Specify the maximum value/number of NumberPicker
+        maxPerson.setMaxValue(10);
+
+        //Gets whether the selector wheel wraps when reaching the min/max value.
+        maxPerson.setWrapSelectorWheel(true);
+
+        //Set a value change listener for NumberPicker
+        /*maxPerson.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
+                //Display the newly selected number from picker
+                tv.setText("Selected Number : " + newVal);
+            }
+        });*/
+
+        createButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Event event = new Event(meal.getText().toString(),
+                        locationAddress.getText().toString(), locationCoordinates.getText().toString(),
+                        maxPerson.getValue()); //change that
+                new Firebase(eventsUrl)
+                        .push()
+                        .setValue(event);
+
+                //how to check if successful?
+                //clear everything or go to previous activity
+                //show snackbar saying event created
+            }
+        });
 
         /*// Set up LisVview
         final ListView listView = (ListView) findViewById(R.id.listView);
@@ -50,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Item item = new Item(text.getText().toString());
+                Event item = new Event(text.getText().toString());
                 new Firebase(itemsUrl)
                         .push()
                         .setValue(item);
