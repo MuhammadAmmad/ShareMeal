@@ -1,7 +1,15 @@
 package com.example.kristijan.sharemeal;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,9 +30,11 @@ public class EventActivity extends AppCompatActivity {
     private String mUserId;
     private String eventsUrl;
 
+
     protected EditText meal;
     protected EditText locationAddress;
-    protected EditText locationCoordinates;
+    protected EditText latitude;
+    protected EditText longitude;
     protected NumberPicker maxPerson;
     protected Button createButton;
 
@@ -47,11 +57,47 @@ public class EventActivity extends AppCompatActivity {
             loadLoginView();
         }
 
+
+
+
+        // Get LocationManager object
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        // Create a criteria object to retrieve provider
+        Criteria criteria = new Criteria();
+
+        // Get the name of the best provider
+        String provider = locationManager.getBestProvider(criteria, true);
+
+        // Get Current Location
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location myLocation = locationManager.getLastKnownLocation(provider);
+
+        //latitude of location
+        double myLatitude = myLocation.getLatitude();
+
+        //longitude og location
+        double myLongitude = myLocation.getLongitude();
+
+
+
+
+
         eventsUrl = Constants.FIREBASE_URL + "/users/" + mUserId + "/events";
 
         meal = (EditText)findViewById(R.id.meal);
         locationAddress = (EditText)findViewById(R.id.locationAddress);
-        locationCoordinates = (EditText)findViewById(R.id.locationCoordinates);
+        latitude = (EditText)findViewById(R.id.latitude);
+        longitude = (EditText)findViewById(R.id.longitude);
         maxPerson = (NumberPicker) findViewById(R.id.maxPerson);
 
         createButton = (Button)findViewById(R.id.createButton);
@@ -62,6 +108,9 @@ public class EventActivity extends AppCompatActivity {
 
         //Gets whether the selector wheel wraps when reaching the min/max value.
         maxPerson.setWrapSelectorWheel(true);
+
+        latitude.setText(String.valueOf(myLatitude));
+        longitude.setText(String.valueOf(myLongitude));
 
         //Set a value change listener for NumberPicker
         /*maxPerson.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -75,15 +124,20 @@ public class EventActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Event event = new Event(meal.getText().toString(),
-                        locationAddress.getText().toString(), locationCoordinates.getText().toString(),
-                        maxPerson.getValue()); //change that
+                        locationAddress.getText().toString(), latitude.getText().toString(),
+                        longitude.getText().toString(), maxPerson.getValue()); //change that
                 new Firebase(eventsUrl)
                         .push()
                         .setValue(event);
 
                 //how to check if successful?
-                //clear everything or go to previous activity
+                //clear everything or go to previous activity --done
                 //show snackbar saying event created
+                Snackbar snackbar = Snackbar
+                        .make(v, "Event created", Snackbar.LENGTH_LONG);
+
+                snackbar.show();
+                finish();
             }
         });
 
@@ -184,4 +238,8 @@ public class EventActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
+    /*
+    Location
+     */
 }

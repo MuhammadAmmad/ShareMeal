@@ -18,8 +18,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="coordinates"
-        android:id="@+id/locationCoordinates"/>
+        android:hint="latitude"
+        android:id="@+id/latitude"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="longitude"
+        android:id="@+id/longitude"/>
 
     <NumberPicker
         android:layout_width="wrap_content"

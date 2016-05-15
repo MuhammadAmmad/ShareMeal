@@ -6,7 +6,8 @@ package com.example.kristijan.sharemeal;
 public class Event {
     private String meal;
     private String locationAddress;
-    private String locationCoordinates;
+    private String latitude;
+    private String longitude;
     private int personLimit;
 
     public String getMeal() {
@@ -25,12 +26,20 @@ public class Event {
         this.locationAddress = locationAddress;
     }
 
-    public String getLocationCoordinates() {
-        return locationCoordinates;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setLocationCoordinates(String locationCoordinates) {
-        this.locationCoordinates = locationCoordinates;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public int getPersonLimit() {
@@ -41,10 +50,11 @@ public class Event {
         this.personLimit = personLimit;
     }
 
-    public Event(String meal, String locationAddress, String locationCoordinates, int personLimit) {
+    public Event(String meal, String locationAddress,String latitude, String longitude, int personLimit) {
         this.meal = meal;
         this.locationAddress = locationAddress;
-        this.locationCoordinates = locationCoordinates;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.personLimit = personLimit;
     }
 }
