@@ -19,22 +19,21 @@ import com.firebase.client.FirebaseError;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class LoginActivity extends AppCompatActivity {
 
-    protected EditText emailEditText;
-    protected EditText passwordEditText;
-    protected Button loginButton;
-    protected TextView signUpTextView;
+    @BindView(R.id.emailField) EditText emailEditText;
+    @BindView(R.id.passwordField) EditText passwordEditText;
+    @BindView(R.id.loginButton) Button loginButton;
+    @BindView(R.id.signUpText) TextView signUpTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        signUpTextView = (TextView) findViewById(R.id.signUpText);
-        emailEditText = (EditText) findViewById(R.id.emailField);
-        passwordEditText = (EditText) findViewById(R.id.passwordField);
-        loginButton = (Button) findViewById(R.id.loginButton);
+        ButterKnife.bind(this);
 
         final Firebase ref = new Firebase(Constants.FIREBASE_URL);
 

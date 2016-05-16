@@ -38,7 +38,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".EventActivity"
+            android:name=".CreateEventActivity"
             android:label="EventActivity">
 
         </activity>
@@ -56,7 +56,7 @@
         <activity
             android:name=".SignUpActivity"
             android:label="LoginActivity"></activity>
-
+        <activity android:name=".ViewEventActivity"></activity>
     </application>
 
 </manifest>

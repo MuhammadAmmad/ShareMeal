@@ -19,7 +19,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.HashMap;
 
 /*
 was originally FragmentActivity, but it should be used when it is used
@@ -28,6 +31,9 @@ in another activity - http://stackoverflow.com/questions/31297246/activity-appco
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private HashMap<Marker, String> mHashMap = new HashMap<>();
+
+    public static final String PARAM_EVENTID = "param_event_id";
 
     private Firebase mRef;
     private String mUserId;
@@ -62,7 +68,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MapsActivity.this, EventActivity.class);
+                Intent intent = new Intent(MapsActivity.this, CreateEventActivity.class);
                 startActivity(intent);
             }
         });
@@ -89,6 +95,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+
+                Intent intent = new Intent(MapsActivity.this, ViewEventActivity.class);
+                intent.putExtra(PARAM_EVENTID, mHashMap.get(marker));
+                startActivity(intent);
+
+
+                Log.d("", marker.getTitle());
+            }
+        });
+
+
 
         String eventsUrl = Constants.FIREBASE_URL + "/users/" + mUserId + "/events";
         new Firebase(eventsUrl)
@@ -98,10 +118,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         double latitude = dataSnapshot.child("latitude").getValue(Double.class);
                         double longitude = dataSnapshot.child("longitude").getValue(Double.class);
                         String title = dataSnapshot.child("meal").getValue(String.class);
+                        String eventID = dataSnapshot.getKey();
 
                         LatLng childLocation = new LatLng(latitude,longitude);
-                        mMap.addMarker(new MarkerOptions().position(childLocation).title(title));
+                        Marker marker = mMap.addMarker(new MarkerOptions().position(childLocation).title(title));
+                        mHashMap.put(marker, eventID);
                         Log.v("E_CHILD_ADDED",childLocation.toString());
+
+
                     }
 
                     @Override

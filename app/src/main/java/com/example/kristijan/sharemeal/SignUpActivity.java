@@ -12,21 +12,21 @@ import android.widget.EditText;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SignUpActivity extends AppCompatActivity {
 
-    protected EditText passwordEditText;
-    protected EditText emailEditText;
-    protected Button signUpButton;
+    @BindView(R.id.passwordField) EditText passwordEditText;
+    @BindView(R.id.emailField) EditText emailEditText;
+    @BindView(R.id.signupButton) Button signUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        passwordEditText = (EditText)findViewById(R.id.passwordField);
-        emailEditText = (EditText)findViewById(R.id.emailField);
-        signUpButton = (Button)findViewById(R.id.signupButton);
-
+        ButterKnife.bind(this);
         final Firebase ref = new Firebase(Constants.FIREBASE_URL);
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
