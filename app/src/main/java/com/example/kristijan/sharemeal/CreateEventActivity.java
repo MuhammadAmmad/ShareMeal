@@ -95,7 +95,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
 
-        eventsUrl = Constants.FIREBASE_URL + "/users/" + mUserId + "/events";
+
 
         ButterKnife.bind(this);
 
@@ -118,20 +118,24 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         });*/
 
+        eventsUrl = Constants.FIREBASE_URL + "/events";
         createButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Event event = new Event(meal.getText().toString(),
+                Event event = new Event(mUserId, meal.getText().toString(),
                         locationAddress.getText().toString(), latitude.getText().toString(),
                         longitude.getText().toString(), maxPerson.getValue()); //change that
-                new Firebase(eventsUrl)
-                        .push()
-                        .setValue(event);
+                Firebase fire =new Firebase(eventsUrl).push();
+                        fire.setValue(event);
+                String eventID = fire.getKey();
+
+                new Firebase(Constants.FIREBASE_URL + "/users/" + mUserId + "/ownsEvents")
+                        .push().setValue(eventID);
 
                 //how to check if successful?
                 //clear everything or go to previous activity --done
                 //show snackbar saying event created
                 Snackbar snackbar = Snackbar
-                        .make(v, "Event created", Snackbar.LENGTH_LONG);
+                        .make(v, "Event created", Snackbar.LENGTH_LONG);//not working
 
                 snackbar.show();
                 finish();

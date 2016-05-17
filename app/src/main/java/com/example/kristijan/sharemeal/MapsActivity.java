@@ -110,7 +110,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        String eventsUrl = Constants.FIREBASE_URL + "/users/" + mUserId + "/events";
+        String eventsUrl = Constants.FIREBASE_URL + "/events";
         new Firebase(eventsUrl)
                 .addChildEventListener(new ChildEventListener() {
                     @Override

@@ -4,11 +4,20 @@ package com.example.kristijan.sharemeal;
  * Created by kristijan on 13/05/16.
  */
 public class Event {
+    private String owner;
     private String meal;
     private String locationAddress;
     private String latitude;
     private String longitude;
     private int personLimit;
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
     public String getMeal() {
         return meal;
@@ -50,7 +59,8 @@ public class Event {
         this.personLimit = personLimit;
     }
 
-    public Event(String meal, String locationAddress,String latitude, String longitude, int personLimit) {
+    public Event(String owner, String meal, String locationAddress,String latitude, String longitude, int personLimit) {
+        this.owner = owner;
         this.meal = meal;
         this.locationAddress = locationAddress;
         this.latitude = latitude;
