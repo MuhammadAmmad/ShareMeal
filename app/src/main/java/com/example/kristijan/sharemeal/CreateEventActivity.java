@@ -19,6 +19,12 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 
 import com.firebase.client.Firebase;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +32,9 @@ import butterknife.ButterKnife;
 /**
  * Created by kristijan on 12/05/16.
  */
-public class CreateEventActivity extends AppCompatActivity {
+public class CreateEventActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+    private GoogleMap mMap;
 
     private Firebase mRef;
 
@@ -98,6 +106,13 @@ public class CreateEventActivity extends AppCompatActivity {
 
 
         ButterKnife.bind(this);
+
+
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
 
         maxPerson.setMinValue(0);
         //Specify the maximum value/number of NumberPicker
@@ -233,6 +248,49 @@ public class CreateEventActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+
+        // Get LocationManager object
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        // Create a criteria object to retrieve provider
+        Criteria criteria = new Criteria();
+
+        // Get the name of the best provider
+        String provider = locationManager.getBestProvider(criteria, true);
+
+        // Get Current Location
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        Location myLocation = locationManager.getLastKnownLocation(provider);
+
+        //latitude of location
+        double myLatitude = myLocation.getLatitude();
+
+        //longitude og location
+        double myLongitude = myLocation.getLongitude();
+
+
+
+
+        // Add a marker in Sydney and move the camera
+        LatLng eventLocation = new LatLng(myLatitude, myLongitude);
+        mMap.addMarker(new MarkerOptions().position(eventLocation).title("Location of the event"));
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(eventLocation));
+         }
+
     private void loadLoginView() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -240,7 +298,5 @@ public class CreateEventActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*
-    Location
-     */
+
 }
