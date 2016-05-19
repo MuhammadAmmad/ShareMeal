@@ -18,7 +18,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 
+import com.borax12.materialdaterangepicker.date.DatePickerDialog;
+import com.borax12.materialdaterangepicker.time.RadialPickerLayout;
+import com.borax12.materialdaterangepicker.time.TimePickerDialog;
 import com.firebase.client.Firebase;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,13 +33,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * Created by kristijan on 12/05/16.
  */
-public class CreateEventActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class CreateEventActivity extends AppCompatActivity implements OnMapReadyCallback, TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private GoogleMap mMap;
 
@@ -41,12 +50,18 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
     private String mUserId;
     private String eventsUrl;
 
+    private Place selectedPlace;
+    private boolean placeSelected = false;
+
+    private static final int PLACE_PICKER_REQUEST = 1020;
+
 
     @BindView(R.id.meal) EditText meal;
     @BindView(R.id.locationAddress) EditText locationAddress;
-    @BindView(R.id.latitude) EditText latitude;
-    @BindView(R.id.longitude) EditText longitude;
+    @BindView(R.id.timeText) EditText timeText;
+    @BindView(R.id.dateText) EditText dateText;
     @BindView(R.id.maxPerson) NumberPicker maxPerson;
+    @BindView(R.id.locationButton) Button locationButton;
     @BindView(R.id.createButton) Button createButton;
 
     @Override
@@ -94,10 +109,10 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
         Location myLocation = locationManager.getLastKnownLocation(provider);
 
         //latitude of location
-        double myLatitude = myLocation.getLatitude();
+        final double myLatitude = myLocation.getLatitude();
 
         //longitude og location
-        double myLongitude = myLocation.getLongitude();
+        final double myLongitude = myLocation.getLongitude();
 
 
 
@@ -121,8 +136,6 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
         //Gets whether the selector wheel wraps when reaching the min/max value.
         maxPerson.setWrapSelectorWheel(true);
 
-        latitude.setText(String.valueOf(myLatitude));
-        longitude.setText(String.valueOf(myLongitude));
 
         //Set a value change listener for NumberPicker
         /*maxPerson.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -133,12 +146,54 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
             }
         });*/
 
+
+        timeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar now = Calendar.getInstance();
+                TimePickerDialog tpd = TimePickerDialog.newInstance(
+                        CreateEventActivity.this,
+                        now.get(Calendar.HOUR_OF_DAY),
+                        now.get(Calendar.MINUTE),
+                        false
+                );
+                tpd.show(getFragmentManager(), "Timepickerdialog");
+            }
+        });
+
+        dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar now = Calendar.getInstance();
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        CreateEventActivity.this,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(getFragmentManager(), "Datepickerdialog");
+            }
+        });
+
+
+
         eventsUrl = Constants.FIREBASE_URL + "/events";
         createButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                double finalLatitude = 0;
+                double finalLongitude = 0;
+                if (placeSelected){
+                    finalLatitude = selectedPlace.getLatLng().latitude;
+                    finalLongitude = selectedPlace.getLatLng().longitude;
+                }
+                else {
+                    finalLatitude = myLatitude;
+                    finalLongitude = myLongitude;
+                }
+
                 Event event = new Event(mUserId, meal.getText().toString(),
-                        locationAddress.getText().toString(), latitude.getText().toString(),
-                        longitude.getText().toString(), maxPerson.getValue()); //change that
+                        locationAddress.getText().toString(), Double.toString(finalLatitude),
+                        Double.toString(finalLongitude), maxPerson.getValue()); //change that
                 Firebase fire =new Firebase(eventsUrl).push();
                         fire.setValue(event);
                 String eventID = fire.getKey();
@@ -223,6 +278,33 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
                         });
             }
         });*/
+
+        locationButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                createPlacePicker();
+            }
+        });
+    }
+
+    private void createPlacePicker() {
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+        try {
+            startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PLACE_PICKER_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                selectedPlace = PlacePicker.getPlace(data, this);
+                placeSelected = true;
+
+            }
+        }
     }
 
     @Override
@@ -287,7 +369,6 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
         // Add a marker in Sydney and move the camera
         LatLng eventLocation = new LatLng(myLatitude, myLongitude);
         mMap.addMarker(new MarkerOptions().position(eventLocation).title("Location of the event"));
-
         mMap.moveCamera(CameraUpdateFactory.newLatLng(eventLocation));
          }
 
@@ -299,4 +380,13 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
     }
 
 
+    @Override
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int hourOfDayEnd, int minuteEnd) {
+        timeText.setText(""+hourOfDay+":"+minute);
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth, int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
+        dateText.setText(""+dayOfMonth+"/"+monthOfYear+"/"+year);
+    }
 }

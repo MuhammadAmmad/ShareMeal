@@ -21,14 +21,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="latitude"
-        android:id="@+id/latitude"/>
+        android:hint="date"
+        android:id="@+id/dateText"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="longitude"
-        android:id="@+id/longitude"/>
+        android:hint="time"
+        android:id="@+id/timeText"/>
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -37,14 +37,6 @@
 
     </NumberPicker>
 
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/createButton"
-        android:text="create"/>
-
     <fragment
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -52,8 +44,20 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="100dp"
         tools:context="com.example.kristijan.sharemeal.CreateEventActivity" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/locationButton"
+        android:text="change location"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createButton"
+        android:text="create"/>
 
 </LinearLayout>
 </ScrollView>

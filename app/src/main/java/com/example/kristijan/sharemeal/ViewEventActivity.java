@@ -31,8 +31,6 @@ public class ViewEventActivity extends AppCompatActivity {
 
     @BindView(R.id.meal) TextView meal;
     @BindView(R.id.locationAddress) TextView locationAddress;
-    @BindView(R.id.latitude) TextView latitude;
-    @BindView(R.id.longitude) TextView longitude;
     @BindView(R.id.maxPerson) TextView maxPerson;
     @BindView(R.id.rsvpBtn) Button rsvpBtn;
 
@@ -105,8 +103,6 @@ public class ViewEventActivity extends AppCompatActivity {
                         if(dataSnapshot.getKey().equals(eventID)){
                             meal.setText(dataSnapshot.child("meal").getValue(String.class));
                             locationAddress.setText(dataSnapshot.child("locationAddress").getValue(String.class));
-                            latitude.setText(dataSnapshot.child("latitude").getValue(String.class));
-                            longitude.setText(dataSnapshot.child("longitude").getValue(String.class));
                             maxPerson.setText(dataSnapshot.child("personLimit").getValue(String.class));
                         }
                     }
