@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
@@ -21,8 +20,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
 
 import java.util.HashMap;
 
@@ -30,43 +27,27 @@ import java.util.HashMap;
 was originally FragmentActivity, but it should be used when it is used
 in another activity - http://stackoverflow.com/questions/31297246/activity-appcompatactivity-fragmentactivity-and-actionbaractivity-when-to-us
  */
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private HashMap<Marker, String> mHashMap = new HashMap<>();
 
     public static final String PARAM_EVENTID = "param_event_id";
 
-    private Firebase mRef;
-    private String mUserId;
 
     protected FloatingActionButton fab;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_maps;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
 
-        // Check Authentication
-        mRef = new Firebase(Constants.FIREBASE_URL);
-        if (mRef.getAuth() == null) {
-            loadLoginView();
-        }
-
-        try {
-            mUserId = mRef.getAuth().getUid();
-        } catch (Exception e) {
-            loadLoginView();
-        }
-
-
-        Drawer result = new DrawerBuilder()
-                .withActivity(this)
-                .withTranslucentStatusBar(false)
-                .withActionBarDrawerToggle(false)
-                .build();
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -84,12 +65,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
-    private void loadLoginView() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 
 
     /**
