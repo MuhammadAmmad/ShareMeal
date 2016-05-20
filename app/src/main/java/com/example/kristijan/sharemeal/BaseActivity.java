@@ -12,7 +12,11 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import butterknife.BindView;
@@ -126,6 +130,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                 })
                 .build();
 
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName("home");
+        SecondaryDrawerItem item2 = new SecondaryDrawerItem();
 
 
         Drawer result = new DrawerBuilder()
@@ -134,6 +140,24 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .withTranslucentStatusBar(true)
                 .withActionBarDrawerToggle(true)
                 .withToolbar(toolbar)
+                .addDrawerItems(
+                        item1,
+                        new DividerDrawerItem(),
+                        item2,
+                        new SecondaryDrawerItem().withName("settings")
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        switch (position) {
+                            case 1:  //open user events activity (owned) CHANGE TO HOSTED
+                                break;
+                            case 2:  loadHostingEvents();//open ViewEvents activity (joined)
+                                break;
+                            }
+                        return false;
+                        }
+                    })
                 .build();
 
 
@@ -145,6 +169,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    private void loadHostingEvents(){
+        Intent intent = new Intent(this, UserEventsActivity.class);
+        startActivity(intent);
+    }
 
+    private void loadJoinedEvents(){
+        Intent intent = new Intent(this, UserEventsActivity.class);
+        startActivity(intent);
+    }
 
 }
