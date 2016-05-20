@@ -344,6 +344,8 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
         }
         Location myLocation = locationManager.getLastKnownLocation(provider);
 
+        if(myLocation!=null){
+
         //latitude of location
         double myLatitude = myLocation.getLatitude();
 
@@ -356,7 +358,7 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
         // Add a marker in Sydney and move the camera
         LatLng eventLocation = new LatLng(myLatitude, myLongitude);
         mMap.addMarker(new MarkerOptions().position(eventLocation).title("Location of the event"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(eventLocation));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(eventLocation));}
          }
 
 

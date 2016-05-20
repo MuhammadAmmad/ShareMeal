@@ -41,8 +41,11 @@
             android:name=".CreateEventActivity"
             android:label="EventActivity" />
         <activity
-            android:name=".UserEventsActivity"
-            android:label="UserEventsActivity" />
+            android:name=".HostingEventsActivity"
+            android:label="HostingEventsActivity" />
+        <activity
+            android:name=".JoinedEventsActivity"
+            android:label="JoinedEventsActivity" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps">

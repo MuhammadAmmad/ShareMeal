@@ -12,10 +12,8 @@ import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
@@ -130,8 +128,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 })
                 .build();
 
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withName("home");
-        SecondaryDrawerItem item2 = new SecondaryDrawerItem();
+        PrimaryDrawerItem homeItem = new PrimaryDrawerItem().withName("Home");
+        PrimaryDrawerItem hostingEventsItem = new PrimaryDrawerItem().withName("Hosting Events").withSelectable(true);
+        PrimaryDrawerItem joinedEventsItem = new PrimaryDrawerItem().withName("Joined Events");
+        //SecondaryDrawerItem item2 = new SecondaryDrawerItem();
 
 
         Drawer result = new DrawerBuilder()
@@ -141,21 +141,23 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .withActionBarDrawerToggle(true)
                 .withToolbar(toolbar)
                 .addDrawerItems(
-                        item1,
-                        new DividerDrawerItem(),
-                        item2,
-                        new SecondaryDrawerItem().withName("settings")
+                        homeItem,
+                        hostingEventsItem,
+                        joinedEventsItem
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        drawerItem.withSetSelected(true);
                         switch (position) {
-                            case 1:  //open user events activity (owned) CHANGE TO HOSTED
+                            case 1:  loadHome();
                                 break;
-                            case 2:  loadHostingEvents();//open ViewEvents activity (joined)
+                            case 2:  loadHostingEvents();
+                                break;
+                            case 3:  loadJoinedEvents();//open ViewEvents activity (joined)
                                 break;
                             }
-                        return false;
+                        return true;
                         }
                     })
                 .build();
@@ -170,12 +172,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void loadHostingEvents(){
-        Intent intent = new Intent(this, UserEventsActivity.class);
+        Intent intent = new Intent(this, HostingEventsActivity.class);
         startActivity(intent);
     }
 
     private void loadJoinedEvents(){
-        Intent intent = new Intent(this, UserEventsActivity.class);
+        Intent intent = new Intent(this, JoinedEventsActivity.class);
+        startActivity(intent);
+    }
+
+    private void loadHome(){
+        Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
 

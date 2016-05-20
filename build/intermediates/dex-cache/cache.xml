@@ -1,2 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.4.0_1204bfe28a79345e2f88f5d594c8b63cc65b907d/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.0.1/345b89f45d02d8b09400b472fab7b7e38f4ede1f/butterknife-annotations-8.0.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="345b89f45d02d8b09400b472fab7b7e38f4ede1f">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.0.1_bdbd3eaad3b482f0413a5566665ee955eb94821a/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_633c9e3e337c265d5493df3e18524f9992b847b8/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-8.4.0_17d39d7425b980a3e18f601e78b2d03ef99001cb/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.mikepenz/materialize/0.8.8/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="197c431b8fc427f77e02997e299bd6b9bef58ede">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-materialize-0.8.8_672ff205c6893b298682fc994b280f9703f1491a/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/tubesock-0.0.12_36b021fc8c6dd9c6fa8c0e31a6e8a9040fafe5be/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-8.4.0_20a144220400660ed505687b24bd8139504ceab7/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-panorama-8.4.0_da05148ed1156258996534309108f43f29877b56/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.mikepenz/fastadapter/1.5.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="947138b93ea35201765eb79a97327417efd1b80a">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-fastadapter-1.5.1_f223e683ec21be11b70be251f3e6330e3f79bab8/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.mikepenz/materialdrawer/5.2.6/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4bea42fab102535c1143a342fc213a0a85177af7">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-materialdrawer-5.2.6_01dc944afa119a7b3e3dc893ec0c2eb516341520/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.2.2_0e04562603eec3d9b8e61d35e34b7cc0e4161271/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-multidex-1.0.1_8283f210d882470f5f77a5b608cc6c7ac7e5f981/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-games-8.4.0_2e7cb6c1d50554a8c3946d97856d344ba99805e4/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.5.2/f19f10d6276aa0b380e2d05d2ab3272d693a5433/firebase-client-android-2.5.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f19f10d6276aa0b380e2d05d2ab3272d693a5433">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/firebase-client-android-2.5.2_65bbf8df08adebd2103b36d325c8f90140c97a3a/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-safetynet-8.4.0_134ef2ef2ef76b7d385c3292bdb60a23eed8bacd/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-drive-8.4.0_bdc8fb8fd3792673e12b204e72726ac0e441999e/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_87397fff627662a64998d7d182fcb3a193612eeb/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-8.4.0_a41732adf47d4431ba676b151aa97b387eafd60f/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/design/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.4.0_bdeae1be39a748b72ea085d921494a1e7e7f838e/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-8.4.0_e0c914e4eaf0653e0a69d74dbd8e7e41bfa57872/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.5.2/91731b8f5868a3e8a8a773f29b8d06b5c358f5bb/firebase-client-jvm-2.5.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="91731b8f5868a3e8a8a773f29b8d06b5c358f5bb">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/firebase-client-jvm-2.5.2_addd737b8968a848af78652144f3be44fb2f449c/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-8.4.0_d5b179a5b9bf79389455a40b4bb93f2d01ee95ea/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="aa546d19da3fa185bc57833acddf4839591a3d6f">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b74989a85c5cbcb7a789392a98e156d49827eeee/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_0a5119288b0306f0870cc1d23aa918fe768533d0/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wallet-8.4.0_670318ffc370c9558e6482a88696c17b24dd22ba/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-plus-8.4.0_21a99be61b30110171c0d33d643a42828120d0e7/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-annotations-2.2.2_d4cb20235398b66ce1525dad1b3643013622efb6/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appindexing-8.4.0_9b307abef91ce7ae2ee2deaacda3c217998454c0/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.jakewharton/butterknife/8.0.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="74ca46e7da11e3d065eb64cdbe6568a7ed74c211">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.jakewharton-butterknife-8.0.1_ef0d3b09b1d6461932a332d7210001f09e662ef1/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.4.0_8f0777b01a03c496dddb54335ce6a7e3062e9caa/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c9eb89c804834163dac8ed77929b17e05a7f5a9a">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_a8bf870df1ef1385f3ee12e8520be0ad1f02171d/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-measurement-8.4.0_9ca85adad124d586969808a106b01cdf9b87bdb4/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.borax12.materialdaterangepicker/library/1.6/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="44873ba0b2bc950c80c480dc08e218e09f3239f1">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.borax12.materialdaterangepicker-library-1.6_d5474a3f9a89a1a022ff29755f8c0f9e83748df6/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-8.4.0_89ebd847b7bb8cc2adfb6586cdb34670493e0b37/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.4.0_a411fabe388d2e85cd72c0a46111dcf3fe176bd5/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-8.4.0_0f662195186dca7ca9bfa0a814b0b507ce56cbfd/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.5.11/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="98a135c7935e62ac041acc1fcb148973bde828d5">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.mikepenz-iconics-core-2.5.11_ea85f9bcce3148e36db07753031f4e6c09cd694d/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gcm-8.4.0_b14903d00daff978d0eacffd93ee11b0d7ca45b9/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-nearby-8.4.0_b9084e918f9cbcf1a4654453738aefa77a93d20f/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-8.4.0_cb5a3fdfff130c510a4b40f5b36deff2cea274ce/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-databind-2.2.2_3dcaaceecfeac07c8f392e74f8129899833938c9/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-8.4.0_bfc0c7698716458bc9cda06a9b64e5c1eb8a3f04/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.4.0_8d285b0735237d4c1f54eb0fc64f56e5ad67cb76/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-8.4.0_f0af41ed1242c9119545596acc02404d7cd6a2a3/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-identity-8.4.0_44ec829c5a6ebd9161135d70089a54e3475d51c9/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-8.4.0_529598f5eef96db8231ccbeee258f3737e157730/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_4a725865e3a0b475dbfab5086973a64fc8f0a3d3/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-mediarouter-v7-23.0.0_b32d920a55eb1448a3a05a8661c1d95844c897d4/classes.dex" />
+    </item>
+    <item
+        jar="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="/home/kristijan/AndroidStudioProjects/ShareMeal/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.0.0_22d78a764e60748e660af3aab2388e8ab589c03a/classes.dex" />
+    </item>
+
+</items>
