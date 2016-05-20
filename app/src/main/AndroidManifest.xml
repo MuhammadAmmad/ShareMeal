@@ -57,8 +57,11 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".SignUpActivity"
-            android:label="LoginActivity" />
+            android:label="SignUpActivity" />
         <activity android:name=".ViewEventActivity" />
+        <activity
+            android:name=".UserSettings"
+            android:label="User Settings" />
 
     </application>
 

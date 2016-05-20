@@ -1,8 +1,6 @@
 package com.example.kristijan.sharemeal;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,18 +11,16 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by kristijan on 15/05/16.
  */
-public class ViewEventActivity extends AppCompatActivity {
+public class ViewEventActivity extends BaseActivity {
 
     public static final String PARAM_EVENTID = "param_event_id";
 
     private Firebase mRef;
 
-    private String mUserId;
     private String eventsUrl;
 
     private String eventID;
@@ -35,24 +31,17 @@ public class ViewEventActivity extends AppCompatActivity {
     @BindView(R.id.rsvpBtn) Button rsvpBtn;
 
     @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_view_event;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_event);
-        // Check Authentication
-        mRef = new Firebase(Constants.FIREBASE_URL);
-        if (mRef.getAuth() == null) {
-            loadLoginView();
-        }
-
-        try {
-            mUserId = mRef.getAuth().getUid();
-        } catch (Exception e) {
-            loadLoginView();
-        }
 
         eventsUrl = Constants.FIREBASE_URL + "/events";
 
-        ButterKnife.bind(this);
+
 
         System.out.println("event intent");
 
@@ -67,8 +56,8 @@ public class ViewEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new Firebase(eventsUrl+"/"+eventID+"/usersJoined")
-                        .push().setValue(mUserId);
-                new Firebase(Constants.FIREBASE_URL + "/users/" + mUserId + "/eventsJoined")
+                        .push().setValue(getmUserId());
+                new Firebase(Constants.FIREBASE_URL + "/users/" + getmUserId() + "/eventsJoined")
                         .push().setValue(eventID);
 
             }
@@ -128,13 +117,6 @@ public class ViewEventActivity extends AppCompatActivity {
                     }
                 });
 
-    }
-
-    private void loadLoginView() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
     }
 
 }

@@ -1,8 +1,6 @@
 package com.example.kristijan.sharemeal;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,39 +13,29 @@ import com.firebase.client.FirebaseError;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by kristijan on 14/05/16.
  */
-public class UserEventsActivity extends AppCompatActivity  {
+public class UserEventsActivity extends BaseActivity  {
     private Firebase mRef;
 
-    private String mUserId;
     ArrayList<String> events;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_user_events;
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_events);
 
         events = new ArrayList<>();
 
-        // Check Authentication
-        mRef = new Firebase(Constants.FIREBASE_URL);
-        if (mRef.getAuth() == null) {
-            loadLoginView();
-        }
 
-        try {
-            mUserId = mRef.getAuth().getUid();
-        } catch (Exception e) {
-            loadLoginView();
-        }
-
-        ButterKnife.bind(this);
 
 
         final UserEventsAdapter adapter = new UserEventsAdapter(getApplicationContext());
@@ -72,7 +60,7 @@ public class UserEventsActivity extends AppCompatActivity  {
         recyclerView.setHasFixedSize(true);//increases performance if size constant
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        new Firebase(Constants.FIREBASE_URL + "/users/" + mUserId + "/ownsEvents")
+        new Firebase(Constants.FIREBASE_URL + "/users/" + getmUserId() + "/ownsEvents")
                 .addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -109,10 +97,5 @@ public class UserEventsActivity extends AppCompatActivity  {
 
     }
 
-    private void loadLoginView() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
+
 }

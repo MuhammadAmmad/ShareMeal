@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.HashMap;
 
+import butterknife.BindView;
+
 /*
 was originally FragmentActivity, but it should be used when it is used
 in another activity - http://stackoverflow.com/questions/31297246/activity-appcompatactivity-fragmentactivity-and-actionbaractivity-when-to-us
@@ -35,9 +37,12 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     public static final String PARAM_EVENTID = "param_event_id";
 
 
-    protected FloatingActionButton fab;
+    //protected FloatingActionButton fab;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
 
     @Override
     protected int getLayoutResourceId() {
@@ -55,7 +60,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        //fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -10,7 +10,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,12 +35,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Calendar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by kristijan on 12/05/16.
  */
-public class CreateEventActivity extends AppCompatActivity implements OnMapReadyCallback, TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+public class CreateEventActivity extends BaseActivity implements OnMapReadyCallback, TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private GoogleMap mMap;
 
@@ -65,24 +63,13 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
     @BindView(R.id.createButton) Button createButton;
 
     @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_create_event;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_event);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        // Check Authentication
-        mRef = new Firebase(Constants.FIREBASE_URL);
-        if (mRef.getAuth() == null) {
-            loadLoginView();
-        }
-
-        try {
-            mUserId = mRef.getAuth().getUid();
-        } catch (Exception e) {
-            loadLoginView();
-        }
-
 
 
 
@@ -120,7 +107,7 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
 
 
 
-        ButterKnife.bind(this);
+
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -321,10 +308,10 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        //MOVE TO SIDEBAR
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            mRef.unauth();
-            loadLoginView();
+            unauthenticate();
         }
 
         return super.onOptionsItemSelected(item);
@@ -372,12 +359,6 @@ public class CreateEventActivity extends AppCompatActivity implements OnMapReady
         mMap.moveCamera(CameraUpdateFactory.newLatLng(eventLocation));
          }
 
-    private void loadLoginView() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 
 
     @Override
