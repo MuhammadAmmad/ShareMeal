@@ -43,4 +43,7 @@ dependencies {
         transitive = true
     }
     compile 'com.borax12.materialdaterangepicker:library:1.6'
+    compile ('io.nlopez.smartlocation:library:3.2.2') {
+        transitive = false
+    }
 }

@@ -35,6 +35,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.Calendar;
 
 import butterknife.BindView;
+import io.nlopez.smartlocation.OnLocationUpdatedListener;
+import io.nlopez.smartlocation.SmartLocation;
 
 /**
  * Created by kristijan on 12/05/16.
@@ -53,6 +55,7 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
 
     private static final int PLACE_PICKER_REQUEST = 1020;
 
+    Location lastLocation;
 
     @BindView(R.id.meal) EditText meal;
     @BindView(R.id.locationAddress) EditText locationAddress;
@@ -71,43 +74,7 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-        // Get LocationManager object
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        // Create a criteria object to retrieve provider
-        Criteria criteria = new Criteria();
-
-        // Get the name of the best provider
-        String provider = locationManager.getBestProvider(criteria, true);
-
-        // Get Current Location
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Location myLocation = locationManager.getLastKnownLocation(provider);
-
-        //latitude of location
-        final double myLatitude = myLocation.getLatitude();
-
-        //longitude og location
-        final double myLongitude = myLocation.getLongitude();
-
-
-
-
-
-
-
-
+        lastLocation = null;
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -173,9 +140,14 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
                     finalLatitude = selectedPlace.getLatLng().latitude;
                     finalLongitude = selectedPlace.getLatLng().longitude;
                 }
-                else {
-                    finalLatitude = myLatitude;
-                    finalLongitude = myLongitude;
+                else if (lastLocation != null){
+                    finalLatitude = lastLocation.getLatitude();
+                    finalLongitude = lastLocation.getLongitude();
+                }
+                else{
+                    //change to alert to select location
+                    finalLatitude = 0;
+                    finalLongitude = 0;
                 }
 
                 Event event = new Event(mUserId, meal.getText().toString(),
@@ -199,7 +171,7 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
             }
         });
 
-        /*// Set up LisVview
+        /* // Set up LisVview
         final ListView listView = (ListView) findViewById(R.id.listView);
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
         listView.setAdapter(adapter);
@@ -321,7 +293,47 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        updateLocation();
 
+        if(lastLocation!=null) {
+            //latitude of location
+            double myLatitude = lastLocation.getLatitude();
+
+            //longitude of location
+            double myLongitude = lastLocation.getLongitude();
+
+            // Add a marker in Sydney and move the camera
+            LatLng eventLocation = new LatLng(myLatitude, myLongitude);
+            mMap.addMarker(new MarkerOptions().position(eventLocation).title("Location of the event"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(eventLocation));
+        }
+
+
+    }
+
+
+
+    @Override
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int hourOfDayEnd, int minuteEnd) {
+        timeText.setText(""+hourOfDay+":"+minute);
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth, int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
+        dateText.setText(""+dayOfMonth+"/"+monthOfYear+"/"+year);
+    }
+
+    private void getLocation(){
+        SmartLocation.with(getApplicationContext()).location()
+                .oneFix()
+                .start(new OnLocationUpdatedListener() {
+                    @Override
+                    public void onLocationUpdated(Location location) {
+                        lastLocation = location;
+                    }});
+    }
+
+    private void updateLocation(){
         // Get LocationManager object
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -342,34 +354,9 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        Location myLocation = locationManager.getLastKnownLocation(provider);
+        lastLocation = locationManager.getLastKnownLocation(provider);
 
-        if(myLocation!=null){
-
-        //latitude of location
-        double myLatitude = myLocation.getLatitude();
-
-        //longitude og location
-        double myLongitude = myLocation.getLongitude();
-
-
-
-
-        // Add a marker in Sydney and move the camera
-        LatLng eventLocation = new LatLng(myLatitude, myLongitude);
-        mMap.addMarker(new MarkerOptions().position(eventLocation).title("Location of the event"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(eventLocation));}
-         }
-
-
-
-    @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int hourOfDayEnd, int minuteEnd) {
-        timeText.setText(""+hourOfDay+":"+minute);
-    }
-
-    @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth, int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
-        dateText.setText(""+dayOfMonth+"/"+monthOfYear+"/"+year);
+        if (lastLocation == null)
+            getLocation();
     }
 }
