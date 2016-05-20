@@ -97,7 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         userDetails.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                email = snapshot.child("email").getValue(String.class);
+                email = snapshot.child("email").getValue(String.class); //use in header
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -134,7 +134,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         //SecondaryDrawerItem item2 = new SecondaryDrawerItem();
 
 
-        Drawer result = new DrawerBuilder()
+        Drawer result = new DrawerBuilder() //if result not needed later, no need to store it
                 .withActivity(this)
                 .withAccountHeader(headerResult)
                 .withTranslucentStatusBar(true)
@@ -154,7 +154,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                                 break;
                             case 2:  loadHostingEvents();
                                 break;
-                            case 3:  loadJoinedEvents();//open ViewEvents activity (joined)
+                            case 3:  loadJoinedEvents();
                                 break;
                             }
                         return true;

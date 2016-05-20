@@ -10,8 +10,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,9 +43,6 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
 
     private GoogleMap mMap;
 
-    private Firebase mRef;
-
-    private String mUserId;
     private String eventsUrl;
 
     private Place selectedPlace;
@@ -84,21 +79,10 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
 
 
         maxPerson.setMinValue(0);
-        //Specify the maximum value/number of NumberPicker
         maxPerson.setMaxValue(10);
 
         //Gets whether the selector wheel wraps when reaching the min/max value.
         maxPerson.setWrapSelectorWheel(true);
-
-
-        //Set a value change listener for NumberPicker
-        /*maxPerson.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-                //Display the newly selected number from picker
-                tv.setText("Selected Number : " + newVal);
-            }
-        });*/
 
 
         timeText.setOnClickListener(new View.OnClickListener() {
@@ -140,103 +124,36 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
                     finalLatitude = selectedPlace.getLatLng().latitude;
                     finalLongitude = selectedPlace.getLatLng().longitude;
                 }
-                else if (lastLocation != null){
-                    finalLatitude = lastLocation.getLatitude();
-                    finalLongitude = lastLocation.getLongitude();
-                }
-                else{
-                    //change to alert to select location
-                    finalLatitude = 0;
-                    finalLongitude = 0;
-                }
+                    else if (lastLocation != null){
+                        finalLatitude = lastLocation.getLatitude();
+                        finalLongitude = lastLocation.getLongitude();
+                    }
+                    else{
+                        //change to alert to select location
+                        finalLatitude = 0;
+                        finalLongitude = 0;
+                    }
 
-                Event event = new Event(mUserId, meal.getText().toString(),
+                Event event = new Event(getmUserId(), meal.getText().toString(),
                         locationAddress.getText().toString(), Double.toString(finalLatitude),
                         Double.toString(finalLongitude), maxPerson.getValue()); //change that
                 Firebase fire =new Firebase(eventsUrl).push();
                         fire.setValue(event);
                 String eventID = fire.getKey();
 
-                new Firebase(Constants.FIREBASE_URL + "/users/" + mUserId + "/ownsEvents")
+                new Firebase(Constants.FIREBASE_URL + "/users/" + getmUserId() + "/ownsEvents")
                         .push().setValue(eventID);
 
                 //how to check if successful?
-                //clear everything or go to previous activity --done
-                //show snackbar saying event created
+                //show snackbar saying event created --not working yet
                 Snackbar snackbar = Snackbar
-                        .make(v, "Event created", Snackbar.LENGTH_LONG);//not working
+                        .make(v, "Event created", Snackbar.LENGTH_LONG);
 
                 snackbar.show();
                 finish();
             }
         });
 
-        /* // Set up LisVview
-        final ListView listView = (ListView) findViewById(R.id.listView);
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
-        listView.setAdapter(adapter);
-
-        // Add items via the Button and EditText at the bottom of the view.
-        final EditText text = (EditText) findViewById(R.id.todoText);
-        final Button button = (Button) findViewById(R.id.addButton);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Event item = new Event(text.getText().toString());
-                new Firebase(itemsUrl)
-                        .push()
-                        .setValue(item);
-            }
-        });
-
-        // Use Firebase to populate the list.
-        new Firebase(itemsUrl)
-                .addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        adapter.add((String) dataSnapshot.child("title").getValue());
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-                        adapter.remove((String) dataSnapshot.child("title").getValue());
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-
-                    }
-                });
-
-        // Delete items when clicked
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                new Firebase(itemsUrl)
-                        .orderByChild("title")
-                        .equalTo((String) listView.getItemAtPosition(position))
-                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                if (dataSnapshot.hasChildren()) {
-                                    DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
-                                    firstChild.getRef().removeValue();
-                                }
-                            }
-
-                            public void onCancelled(FirebaseError firebaseError) {
-                            }
-                        });
-            }
-        });*/
 
         locationButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -266,28 +183,7 @@ public class CreateEventActivity extends BaseActivity implements OnMapReadyCallb
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //MOVE TO SIDEBAR
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_logout) {
-            unauthenticate();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

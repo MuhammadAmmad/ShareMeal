@@ -41,10 +41,6 @@ public class ViewEventActivity extends BaseActivity {
 
         eventsUrl = Constants.FIREBASE_URL + "/events";
 
-
-
-        System.out.println("event intent");
-
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             eventID = extras.getString(PARAM_EVENTID);
@@ -63,7 +59,7 @@ public class ViewEventActivity extends BaseActivity {
             }
         });
 
-
+        //firebases example that can be useful
         /*Firebase ref = new Firebase(Constants.FIREBASE_URL);
 // fetch a list of Mary's groups
         ref.child("users/mchen/groups").addChildEventListener(new ChildEventListener() {
@@ -116,7 +112,7 @@ public class ViewEventActivity extends BaseActivity {
 
                     }
                 });
-
+        //only single call needed!!!
     }
 
 }

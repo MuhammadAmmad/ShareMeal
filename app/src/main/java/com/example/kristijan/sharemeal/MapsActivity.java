@@ -25,19 +25,13 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 
-/*
-was originally FragmentActivity, but it should be used when it is used
-in another activity - http://stackoverflow.com/questions/31297246/activity-appcompatactivity-fragmentactivity-and-actionbaractivity-when-to-us
- */
+
 public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private HashMap<Marker, String> mHashMap = new HashMap<>();
 
     public static final String PARAM_EVENTID = "param_event_id";
-
-
-    //protected FloatingActionButton fab;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
@@ -53,14 +47,11 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,11 +66,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -93,8 +79,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
                 intent.putExtra(PARAM_EVENTID, mHashMap.get(marker));
                 startActivity(intent);
 
-
-                Log.d("", marker.getTitle());
+                Log.d("Marker clicked", marker.getTitle());
             }
         });
 
@@ -112,7 +97,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
 
                         LatLng childLocation = new LatLng(latitude,longitude);
                         Marker marker = mMap.addMarker(new MarkerOptions().position(childLocation).title(title));
-                        mHashMap.put(marker, eventID);
+                        mHashMap.put(marker, eventID); //to display event details
                         Log.v("E_CHILD_ADDED",childLocation.toString());
 
 
@@ -139,35 +124,15 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
                     }
                 });
 
-
-
-
-
-        // Add a marker in Sydney and move the camera
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         enableMyLocation();
 
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
     }
 
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == MY_LOCATION_REQUEST_CODE) {
-            if (permissions.length == 1 &&
-                    permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
-                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                mMap.setMyLocationEnabled(true);
-            } else {
-                // Permission was denied. Display an error message.
-            }
-        }
-    }*/
 
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) { //I think that's only for newer android versions
+                != PackageManager.PERMISSION_GRANTED) { //that might be only for newer android versions
             // Permission to access the location is missing.
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     LOCATION_PERMISSION_REQUEST_CODE);
