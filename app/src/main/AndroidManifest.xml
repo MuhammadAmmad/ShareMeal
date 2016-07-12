@@ -68,6 +68,9 @@
         <activity
             android:name=".UserSettings"
             android:label="User Settings" />
+        <activity
+            android:name=".ShareActivity"
+            android:label="ShareActivity" />
 
     </application>
 

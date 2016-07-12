@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:orientation="vertical">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -27,17 +27,20 @@
                 android:hint="what"
                 android:id="@+id/meal" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="where"
-                android:id="@+id/locationAddress"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="date"
-                android:id="@+id/dateText"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="where"
+                        android:id="@+id/locationAddress"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="date"
+                    android:id="@+id/dateText"/>
+
+
 
             <EditText
                 android:layout_width="match_parent"
@@ -59,6 +62,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 tools:context="com.example.kristijan.sharemeal.CreateEventActivity" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtPrice"
+                android:inputType="numberDecimal|numberSigned"/>
 
             <Button
                 android:layout_width="wrap_content"

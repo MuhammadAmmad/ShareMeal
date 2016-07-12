@@ -37,5 +37,12 @@
         android:id="@+id/rsvpBtn"
         android:text="RSVP"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/payBtn"
+        android:text="Pay"
+        android:onClick="onBraintreeSubmit"/>
+
 
 </LinearLayout>
